@@ -36,7 +36,7 @@ public class Parser {
         }
 
         if (peek().type != EOF) {
-            throw error(peek(), "Last expression should be the EOF");
+            error(peek(), "Last expression should be the EOF");
         }
 
         return expr;
