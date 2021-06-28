@@ -35,6 +35,10 @@ public class Parser {
             expr = new Expr.Binary(expr, operator, right);
         }
 
+        if (peek().type != EOF) {
+            throw error(peek(), "Last expression should be the EOF");
+        }
+
         return expr;
     }
 
