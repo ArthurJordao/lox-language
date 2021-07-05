@@ -1,5 +1,8 @@
 package com.craftinginterpreters.lox;
 
+import com.craftinginterpreters.lox.Expr.Assign;
+import com.craftinginterpreters.lox.Expr.Variable;
+
 public class AstPrinter implements Expr.Visitor<String>{
     public static void main(String[] args) {
         Expr expression = new Expr.Binary(
@@ -50,5 +53,17 @@ public class AstPrinter implements Expr.Visitor<String>{
     @Override
     public String visitUnaryExpr(Expr.Unary expr) {
         return parenthesize(expr.operator.lexeme, expr.right);
+    }
+
+
+    @Override
+    public String visitAssignExpr(Assign expr) {
+        return parenthesize(expr.name.lexeme + " = ", expr.value);
+    }
+
+
+    @Override
+    public String visitVariableExpr(Variable expr) {
+        return expr.name.lexeme;
     }
 }
