@@ -1,19 +1,11 @@
-var a = "global a";
-var b = "global b";
-var c = "global c";
-{
-  var a = "outer a";
-  var b = "outer b";
-  {
-    var a = "inner a";
-    print a;
-    print b;
-    print c;
+class BinaryTree {
+  init(left, right, value) {
+    this.left = left;
+    this.right = right;
+    this.value = value;
   }
-  print a;
-  print b;
-  print c;
 }
-print a;
-print b;
-print c;
+
+var myTree = BinaryTree(BinaryTree(nil, nil, 4), BinaryTree(nil, nil, 2), 3);
+
+print myTree.left.value;
